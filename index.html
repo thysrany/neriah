@@ -56,7 +56,7 @@
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background-image: linear-gradient(160deg, #1a4d10 0%, #0d3008 50%, #081f05 100%);
+    background-image: url('https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1600&q=80');
     background-size: cover;
     background-position: center 35%;
     filter: brightness(0.35);
@@ -233,30 +233,6 @@
   .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
   .footer-links a:hover { color: var(--amber); }
   .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; text-align: center; font-size: 0.8rem; }
-
-
-  /* Photo placeholder styling */
-  .photo-placeholder {
-    width: 100%; height: 100%;
-    min-height: 220px;
-    background: linear-gradient(135deg, #1a5210 0%, #2d7a1e 50%, #1a5210 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: rgba(255,255,255,0.6);
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    padding: 20px;
-  }
-  .photo-placeholder .ph-icon { font-size: 2.5rem; opacity: 0.5; }
-  .photo-placeholder .ph-label { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
-  .photo-placeholder .ph-hint { font-size: 0.72rem; opacity: 0.45; }
-  .gs-item .photo-placeholder { min-height: 300px; }
-  .pillar-img .photo-placeholder { min-height: 210px; }
-  .story-photo .photo-placeholder { min-height: 240px; }
-
   /* RESPONSIVE */
   @media (max-width: 900px) {
     .about-grid, .story-grid, .needs-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -333,22 +309,22 @@
   <div class="photo-grid">
     <!-- Smiling African boys – Roman Nguyen / Unsplash (free) -->
     <div class="photo-item tall">
-      <div class="photo-placeholder"><div class="ph-icon">😊</div><div class="ph-label">Children Smiling</div><div class="ph-hint">Add your photo here</div></div>
+      <img src="https://images.unsplash.com/flagged/photo-1555251255-e9a095d6eb9d?w=700&q=80" alt="Children smiling" style="width:100%;height:100%;object-fit:cover;min-height:220px;display:block;">
       <div class="photo-caption">Hope for a Brighter Future</div>
     </div>
     <!-- African children group - Annie Spratt / Unsplash (free) -->
     <div class="photo-item wide">
-      <div class="photo-placeholder"><div class="ph-icon">👨‍👩‍👧‍👦</div><div class="ph-label">Community Children</div><div class="ph-hint">Add your photo here</div></div>
+      <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=500&q=80" alt="Children outdoors" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="photo-caption">Children in the Community</div>
     </div>
     <!-- Black nurse / CDC Unsplash (free) -->
     <div class="photo-item">
-      <div class="photo-placeholder"><div class="ph-icon">🤝</div><div class="ph-label">Patient Care</div><div class="ph-hint">Add your photo here</div></div>
+      <img src="https://images.unsplash.com/photo-1591012911207-0dbbc96f3db4?w=600&q=80" alt="Healthcare worker with patient" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="photo-caption">Compassionate Care</div>
     </div>
     <!-- African child smiling - Unsplash free -->
     <div class="photo-item">
-      <div class="photo-placeholder"><div class="ph-icon">👶</div><div class="ph-label">Child Healthcare</div><div class="ph-hint">Add your photo here</div></div>
+      <img src="https://images.unsplash.com/photo-1544476671-267ad5717d8e?w=600&q=80" alt="Child receiving care" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="photo-caption">Every Child Matters</div>
     </div>
   </div>
@@ -397,7 +373,7 @@
     <div class="pillar-card">
       <div class="pillar-img">
         <!-- Black doctor examining patient - Unsplash NCI (free) -->
-        <div class="photo-placeholder"><div class="ph-icon">🏥</div><div class="ph-label">Medical Services</div><div class="ph-hint">Add your photo here</div></div>
+        <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=600&q=80" alt="Medical clinic care" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div class="pillar-top">
         <div class="pillar-icon">🏥</div>
@@ -410,7 +386,7 @@
     <div class="pillar-card">
       <div class="pillar-img">
         <!-- African kids learning - Unsplash free -->
-        <div class="photo-placeholder"><div class="ph-icon">📚</div><div class="ph-label">Education</div><div class="ph-hint">Add your photo here</div></div>
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Child learning" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div class="pillar-top">
         <div class="pillar-icon">📚</div>
@@ -423,7 +399,7 @@
     <div class="pillar-card">
       <div class="pillar-img">
         <!-- Community gathering Africa - Unsplash free -->
-        <div class="photo-placeholder"><div class="ph-icon">🌿</div><div class="ph-label">Community</div><div class="ph-hint">Add your photo here</div></div>
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80" alt="Children outdoors" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div class="pillar-top">
         <div class="pillar-icon">🌿</div>
@@ -440,22 +416,22 @@
 <div class="gallery-strip">
   <!-- African child close-up smiling - Unsplash free -->
   <div class="gs-item">
-    <div class="photo-placeholder"><div class="ph-icon">✨</div><div class="ph-label">Hope</div><div class="ph-hint">Add your photo here</div></div>
+    <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=500&q=80" alt="Child smiling" style="width:100%;height:100%;object-fit:cover;display:block;">
     <span class="gs-label">Hope</span>
   </div>
   <!-- Black nurse with patient - Unsplash CDC (free) -->
   <div class="gs-item">
-    <div class="photo-placeholder"><div class="ph-icon">❤️</div><div class="ph-label">Care</div><div class="ph-hint">Add your photo here</div></div>
+    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=80" alt="Nurse with patient" style="width:100%;height:100%;object-fit:cover;display:block;">
     <span class="gs-label">Care</span>
   </div>
   <!-- African children group outdoor - Unsplash free -->
   <div class="gs-item">
-    <div class="photo-placeholder"><div class="ph-icon">👥</div><div class="ph-label">Community</div><div class="ph-hint">Add your photo here</div></div>
+    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=500&q=80" alt="Children outdoors" style="width:100%;height:100%;object-fit:cover;display:block;">
     <span class="gs-label">Community</span>
   </div>
   <!-- Child learning, writing - Unsplash free -->
   <div class="gs-item">
-    <div class="photo-placeholder"><div class="ph-icon">✏️</div><div class="ph-label">Education</div><div class="ph-hint">Add your photo here</div></div>
+    <img src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?w=500&q=80" alt="Child learning" style="width:100%;height:100%;object-fit:cover;display:block;">
     <span class="gs-label">Education</span>
   </div>
 </div>
@@ -477,7 +453,7 @@
     <div class="story-aside">
       <!-- Black mother and child at clinic - Unsplash free -->
       <div class="story-photo">
-        <div class="photo-placeholder"><div class="ph-icon">🤱</div><div class="ph-label">Maternal Care</div><div class="ph-hint">Add your photo here</div></div>
+        <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80" alt="Mother and child receiving care" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <p class="section-label" style="color:var(--amber); margin-top: 4px;">Key Milestones</p>
       <div class="timeline-item">
