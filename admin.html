@@ -10,7 +10,6 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Lato',sans-serif; background:#f0f4f0; min-height:100vh; }
 
-  /* LOGIN */
   #login-screen {
     min-height:100vh; display:flex; align-items:center; justify-content:center;
     background:linear-gradient(135deg,#0d3a12,#1B6B25);
@@ -22,24 +21,24 @@
   }
   .login-card img { height:80px; margin-bottom:18px; }
   .login-card h1 { font-family:'Playfair Display',serif; color:var(--green); font-size:1.4rem; margin-bottom:6px; }
-  .login-card .subtitle { color:#888; font-size:0.88rem; margin-bottom:28px; }
-  .field-group { text-align:left; margin-bottom:14px; }
-  .field-group label { font-size:0.78rem; font-weight:700; color:#555; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:6px; }
-  .field-group input {
+  .login-card .sub { color:#888; font-size:0.88rem; margin-bottom:28px; }
+  .field { text-align:left; margin-bottom:14px; }
+  .field label { font-size:0.78rem; font-weight:700; color:#555; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:6px; }
+  .field input {
     width:100%; padding:12px 14px; border:2px solid #ddd; border-radius:6px;
     font-size:0.95rem; font-family:'Lato',sans-serif; outline:none; transition:border-color 0.2s;
   }
-  .field-group input:focus { border-color:var(--green); }
-  .field-group small { font-size:0.74rem; color:#aaa; margin-top:5px; display:block; line-height:1.5; }
-  .login-card button {
+  .field input:focus { border-color:var(--green); }
+  .field small { font-size:0.74rem; color:#aaa; margin-top:5px; display:block; line-height:1.5; }
+  #login-btn {
     width:100%; padding:13px; background:var(--green); color:#fff;
     border:none; border-radius:6px; font-size:1rem; font-weight:700;
     font-family:'Lato',sans-serif; cursor:pointer; margin-top:6px; transition:background 0.2s;
   }
-  .login-card button:hover { background:#155a1e; }
-  .login-card button:disabled { opacity:0.6; cursor:not-allowed; }
+  #login-btn:hover { background:#155a1e; }
+  #login-btn:disabled { opacity:0.6; cursor:not-allowed; }
   #login-error {
-    color:#c0392b; font-size:0.82rem; margin-top:12px;
+    color:#c0392b; font-size:0.83rem; margin-top:12px;
     background:#fdf0f0; border:1px solid #f5c6c6; border-radius:6px;
     padding:10px 14px; display:none; text-align:left; line-height:1.6;
   }
@@ -49,7 +48,6 @@
   }
   .token-help a { color:var(--green); }
 
-  /* ADMIN */
   #admin-screen { display:none; }
   .admin-nav {
     background:var(--green); padding:0 32px;
@@ -57,37 +55,30 @@
     height:64px; position:sticky; top:0; z-index:10;
     box-shadow:0 2px 12px rgba(0,0,0,0.2);
   }
-  .admin-nav-brand { display:flex; align-items:center; gap:12px; }
-  .admin-nav-brand img { height:44px; }
-  .nav-text small { color:var(--amber); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; display:block; }
-  .nav-text span { color:#fff; font-weight:700; font-size:1rem; }
-  .logout-btn {
+  .nav-brand { display:flex; align-items:center; gap:12px; }
+  .nav-brand img { height:44px; }
+  .nav-brand small { color:var(--amber); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; display:block; }
+  .nav-brand span { color:#fff; font-weight:700; font-size:1rem; }
+  #logout-btn {
     background:rgba(255,255,255,0.15); color:#fff; border:none;
     padding:8px 18px; border-radius:6px; cursor:pointer;
     font-family:'Lato',sans-serif; font-weight:700; font-size:0.85rem;
   }
-  .logout-btn:hover { background:rgba(255,255,255,0.25); }
+  #logout-btn:hover { background:rgba(255,255,255,0.25); }
 
   .admin-body { max-width:1100px; margin:0 auto; padding:40px 24px 110px; }
   .admin-header { margin-bottom:32px; }
   .admin-header h2 { font-family:'Playfair Display',serif; color:var(--green); font-size:1.8rem; margin-bottom:8px; }
   .admin-header p { color:#666; font-size:0.95rem; line-height:1.7; }
-  .repo-badge {
-    display:inline-flex; align-items:center; gap:8px;
-    background:#e8f5e9; border:1px solid #c8e6c9; border-radius:6px;
-    padding:6px 12px; font-size:0.82rem; font-weight:700; color:var(--green); margin-top:10px;
-  }
 
   .photo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
   .photo-card {
     background:#fff; border-radius:10px; overflow:hidden;
-    box-shadow:0 2px 12px rgba(0,0,0,0.08); transition:box-shadow 0.2s;
-    border:2px solid transparent;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08); border:2px solid transparent; transition:all 0.2s;
   }
-  .photo-card:hover { box-shadow:0 6px 24px rgba(0,0,0,0.13); }
   .photo-card.changed { border-color:var(--green); }
   .card-thumb { width:100%; height:190px; object-fit:cover; display:block; background:#e8efe8; }
-  .card-thumb.bg-thumb { background-size:cover; background-position:center; }
+  .card-thumb.bg { background-size:cover; background-position:center; }
   .card-body { padding:16px 18px; }
   .card-label { font-weight:700; color:#222; font-size:0.95rem; margin-bottom:3px; }
   .card-hint { font-size:0.78rem; color:#999; margin-bottom:14px; }
@@ -95,7 +86,7 @@
   .btn-change {
     flex:1; padding:9px; background:var(--green); color:#fff; border:none;
     border-radius:6px; font-weight:700; font-size:0.82rem;
-    font-family:'Lato',sans-serif; cursor:pointer; transition:background 0.2s;
+    font-family:'Lato',sans-serif; cursor:pointer;
   }
   .btn-change:hover { background:#155a1e; }
   .btn-reset {
@@ -107,29 +98,26 @@
   .card-status { font-size:0.72rem; font-weight:700; margin-top:8px; color:#bbb; }
   .card-status.changed { color:var(--green); }
 
-  /* SAVE BAR */
   .save-bar {
     position:fixed; bottom:0; left:0; right:0; background:#fff;
     border-top:2px solid #e8e8e8; padding:16px 32px;
     display:flex; align-items:center; justify-content:space-between; gap:20px;
     box-shadow:0 -4px 20px rgba(0,0,0,0.08); z-index:10;
   }
-  .save-info p { font-size:0.88rem; color:#666; margin-bottom:2px; }
-  .save-info small { font-size:0.76rem; color:#aaa; }
+  .save-bar p { font-size:0.88rem; color:#666; }
   #change-count { color:var(--green); font-weight:700; }
-  .btn-save {
+  #push-btn {
     background:var(--gold); color:#fff; border:none; padding:13px 36px;
     border-radius:6px; font-weight:700; font-size:1rem;
-    font-family:'Lato',sans-serif; cursor:pointer; white-space:nowrap; transition:all 0.2s;
+    font-family:'Lato',sans-serif; cursor:pointer; white-space:nowrap;
   }
-  .btn-save:hover { background:var(--amber); }
-  .btn-save:disabled { opacity:0.6; cursor:not-allowed; }
+  #push-btn:hover { background:var(--amber); }
+  #push-btn:disabled { opacity:0.6; cursor:not-allowed; }
 
-  /* TOAST */
   #toast {
-    position:fixed; top:80px; right:24px; z-index:999; max-width:340px;
-    color:#fff; padding:13px 20px; border-radius:8px; font-weight:700;
-    font-size:0.88rem; line-height:1.5; box-shadow:0 4px 20px rgba(0,0,0,0.2);
+    position:fixed; top:80px; right:24px; z-index:999;
+    color:#fff; padding:13px 20px; border-radius:8px; font-weight:700; font-size:0.88rem;
+    box-shadow:0 4px 20px rgba(0,0,0,0.2); max-width:340px; line-height:1.5;
     opacity:0; transform:translateY(-10px); transition:all 0.3s; pointer-events:none;
   }
   #toast.success { background:var(--green); }
@@ -140,90 +128,73 @@
     .admin-nav { padding:0 16px; }
     .admin-body { padding:24px 16px 130px; }
     .save-bar { flex-direction:column; gap:10px; padding:14px 16px; }
-    .btn-save { width:100%; text-align:center; }
+    #push-btn { width:100%; text-align:center; }
   }
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-card">
     <img src="Logo_NERIAH_transparent.png" alt="Neriah" onerror="this.style.display='none'">
     <h1>Site Admin</h1>
-    <p class="subtitle">Neriah Community Health Foundation</p>
+    <p class="sub">Neriah Community Health Foundation</p>
 
-    <div class="field-group">
+    <div class="field">
       <label>Admin Password</label>
-      <input type="password" id="pw-input" placeholder="Enter password"
-             onkeydown="if(event.key==='Enter') tryLogin()">
+      <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')tryLogin()">
     </div>
-
-    <div class="field-group">
+    <div class="field">
       <label>GitHub Token</label>
-      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
-             onkeydown="if(event.key==='Enter') tryLogin()">
-      <small>Needs <strong>repo</strong> scope. Stored only in this browser tab — never saved anywhere.</small>
+      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" onkeydown="if(event.key==='Enter')tryLogin()">
+      <small>Needs <strong>repo</strong> scope. Never stored — only lives in this tab.</small>
     </div>
-
-    <div class="field-group">
-      <label>Repository (user/repo)</label>
-      <input type="text" id="repo-input" placeholder="e.g. thysrany/neriah-website" value="thysrany/neriah">
+    <div class="field">
+      <label>Repository</label>
+      <input type="text" id="repo-input" value="thysrany/neriah">
     </div>
-
-    <div class="field-group">
+    <div class="field">
       <label>Branch</label>
       <input type="text" id="branch-input" value="main">
     </div>
-
-    <div class="field-group">
-      <label>Path to neriah.html in repo</label>
-      <input type="text" id="path-input" value="neriah.html">
+    <div class="field">
+      <label>File path</label>
+      <input type="text" id="path-input" value="index.html">
     </div>
 
     <button id="login-btn" onclick="tryLogin()">Sign In & Connect to GitHub</button>
     <div id="login-error"></div>
 
     <div class="token-help">
-      <strong>How to get a GitHub Token:</strong><br>
-      GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → check <strong>repo</strong> → copy the token.
-      <br><br>
-      <a href="https://github.com/settings/tokens/new" target="_blank">→ Create token on GitHub</a><br><br><strong>Your live site:</strong> <a href="https://thysrany.github.io/neriah/" target="_blank">thysrany.github.io/neriah/</a>
+      <strong>Need a token?</strong> GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → check <strong>repo</strong> → copy it.<br><br>
+      <a href="https://github.com/settings/tokens/new?description=Neriah+Admin&scopes=repo" target="_blank">→ Create token on GitHub</a>
     </div>
   </div>
 </div>
 
-<!-- ADMIN -->
 <div id="admin-screen">
   <nav class="admin-nav">
-    <div class="admin-nav-brand">
+    <div class="nav-brand">
       <img src="Logo_NERIAH_transparent.png" alt="Logo" onerror="this.style.display='none'">
-      <div class="nav-text">
+      <div>
         <small>Admin Panel</small>
         <span>Neriah Community Health Foundation</span>
       </div>
     </div>
-    <button class="logout-btn" onclick="logout()">Sign Out</button>
+    <button id="logout-btn" onclick="logout()">Sign Out</button>
   </nav>
 
   <div class="admin-body">
     <div class="admin-header">
       <h2>Edit Website Photos</h2>
-      <p>Click <strong>Change Photo</strong>, pick an image from your computer, then click <strong>Push to GitHub</strong>. Your live website updates automatically.</p>
-      <div class="repo-badge">
-        <span>📁</span>
-        <span id="repo-label"></span>
-      </div>
+      <p>Click <strong>Change Photo</strong>, pick an image, then click <strong>Push to GitHub</strong>. Your live site updates in ~30 seconds.</p>
     </div>
     <div class="photo-grid" id="photo-grid"></div>
   </div>
 
   <div class="save-bar">
-    <div class="save-info">
-      <p><span id="change-count">No changes yet</span></p>
-      <small>Pushes to thysrany/neriah → live in ~30 sec</small>
-    </div>
-    <button class="btn-save" id="save-btn" onclick="pushToGitHub()">🚀 Push to GitHub</button>
+    <p><span id="change-count">No changes yet</span></p>
+    <button id="push-btn" onclick="pushToGitHub()">🚀 Push to GitHub</button>
   </div>
 </div>
 
@@ -231,7 +202,7 @@
 <input type="file" id="file-input" accept="image/*" style="display:none">
 
 <script>
-const PASSWORD = 'neriah2024'; // ← change this
+const PASSWORD = 'neriah2024';
 
 const PHOTOS = [
   { id:'hero-bg',        label:'Hero Background',           hint:'Full-width banner at top',              urlKey:'photo-1509099836639-18ba1795216d', isBg:true  },
@@ -252,31 +223,22 @@ const customPhotos = {};
 let siteHtml = '';
 let ghToken = '', ghRepo = '', ghBranch = '', ghPath = '', ghSha = '';
 
-// ── LOGIN & CONNECT ────────────────────────────────────
 async function tryLogin() {
   const pw     = document.getElementById('pw-input').value.trim();
   const token  = document.getElementById('token-input').value.trim();
   const repo   = document.getElementById('repo-input').value.trim();
   const branch = document.getElementById('branch-input').value.trim() || 'main';
-  const path   = document.getElementById('path-input').value.trim() || 'neriah.html';
+  const path   = document.getElementById('path-input').value.trim() || 'index.html';
   const errEl  = document.getElementById('login-error');
   const btn    = document.getElementById('login-btn');
 
   errEl.style.display = 'none';
-
-  if (pw !== PASSWORD) {
-    showLoginError('Incorrect password.');
-    return;
-  }
-  if (!token || !repo) {
-    showLoginError('Please enter your GitHub token and repository.');
-    return;
-  }
+  if (pw !== PASSWORD) { showLoginError('Incorrect password.'); return; }
+  if (!token || !repo) { showLoginError('Please fill in all fields.'); return; }
 
   btn.disabled = true;
-  btn.textContent = 'Connecting to GitHub…';
+  btn.textContent = 'Connecting…';
 
-  // Fetch the file from GitHub API
   try {
     const resp = await fetch(
       `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`,
@@ -284,17 +246,13 @@ async function tryLogin() {
     );
     if (!resp.ok) {
       const err = await resp.json();
-      throw new Error(err.message || `GitHub API error ${resp.status}`);
+      throw new Error(err.message || `HTTP ${resp.status}`);
     }
     const data = await resp.json();
-    ghToken  = token;
-    ghRepo   = repo;
-    ghBranch = branch;
-    ghPath   = path;
-    ghSha    = data.sha;
-    siteHtml = atob(data.content.replace(/\n/g, ''));
+    ghToken = token; ghRepo = repo; ghBranch = branch; ghPath = path; ghSha = data.sha;
+    siteHtml = decodeURIComponent(escape(atob(data.content.replace(/\n/g,''))));
   } catch(e) {
-    showLoginError(`GitHub connection failed: ${e.message}`);
+    showLoginError('GitHub error: ' + e.message);
     btn.disabled = false;
     btn.textContent = 'Sign In & Connect to GitHub';
     return;
@@ -302,7 +260,6 @@ async function tryLogin() {
 
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('admin-screen').style.display = 'block';
-  document.getElementById('repo-label').textContent = `${repo} / ${path} (${branch})`;
   buildGrid();
 }
 
@@ -324,7 +281,6 @@ function logout() {
   document.getElementById('login-btn').textContent = 'Sign In & Connect to GitHub';
 }
 
-// ── GRID ───────────────────────────────────────────────
 function buildGrid() {
   const grid = document.getElementById('photo-grid');
   grid.innerHTML = '';
@@ -333,10 +289,10 @@ function buildGrid() {
     const thumb  = custom ? custom.dataUrl : `https://images.unsplash.com/${p.urlKey}?w=400&q=60`;
     const card   = document.createElement('div');
     card.className = 'photo-card' + (custom ? ' changed' : '');
-    card.innerHTML = `
-      ${p.isBg
-        ? `<div class="card-thumb bg-thumb" style="background-image:url('${thumb}')"></div>`
-        : `<img class="card-thumb" src="${thumb}" alt="${p.label}" onerror="this.style.background='#ddd'">`}
+    card.innerHTML = p.isBg
+      ? `<div class="card-thumb bg" style="background-image:url('${thumb}')"></div>`
+      : `<img class="card-thumb" src="${thumb}" alt="${p.label}" onerror="this.style.background='#ddd'">`;
+    card.innerHTML += `
       <div class="card-body">
         <div class="card-label">${p.label}</div>
         <div class="card-hint">${p.hint}</div>
@@ -345,21 +301,16 @@ function buildGrid() {
           ${custom ? `<button class="btn-reset" onclick="resetPhoto('${p.id}')">↺ Reset</button>` : ''}
         </div>
         <div class="card-status ${custom ? 'changed' : ''}">
-          ${custom ? `✓ ${custom.fileName}` : 'Original photo'}
+          ${custom ? '✓ ' + custom.fileName : 'Original photo'}
         </div>
       </div>`;
     grid.appendChild(card);
   });
-  updateCount();
-}
-
-function updateCount() {
   const n = Object.keys(customPhotos).length;
   document.getElementById('change-count').textContent =
-    n === 0 ? 'No changes yet' : `${n} photo${n > 1 ? 's' : ''} changed — ready to push`;
+    n === 0 ? 'No changes yet' : `${n} photo${n > 1 ? 's' : ''} changed`;
 }
 
-// ── FILE PICKER ────────────────────────────────────────
 function openPicker(id) {
   const input = document.getElementById('file-input');
   input.value = '';
@@ -382,36 +333,53 @@ function resetPhoto(id) {
   buildGrid();
 }
 
-// ── PUSH TO GITHUB ─────────────────────────────────────
 async function pushToGitHub() {
   if (Object.keys(customPhotos).length === 0) {
-    showToast('No changes to push', 'error'); return;
+    showToast('No changes to push', 'error');
+    return;
   }
-  const btn = document.getElementById('save-btn');
+  const btn = document.getElementById('push-btn');
   btn.disabled = true;
   btn.textContent = '⏳ Pushing…';
 
-  // Apply all photo replacements
+  // Apply photo replacements to the site HTML
   let output = siteHtml;
   PHOTOS.forEach(p => {
     const custom = customPhotos[p.id];
     if (!custom) return;
-    const key = p.urlKey;
     if (p.isBg) {
       output = output.replace(
-        new RegExp(`url\\('https://images\\.unsplash\\.com/${key}[^']*'\\)`, 'g'),
+        new RegExp(`url\\('https://images\\.unsplash\\.com/${p.urlKey}[^']*'\\)`, 'g'),
         `url('${custom.dataUrl}')`
       );
     } else {
       output = output.replace(
-        new RegExp(`https://images\\.unsplash\\.com/${key}[^"'\\s]*`, 'g'),
+        new RegExp(`https://images\\.unsplash\\.com/${p.urlKey}[^"'\\s]*`, 'g'),
         custom.dataUrl
       );
     }
   });
 
-  // Base64-encode for GitHub API
-  const encoded = btoa(unescape(encodeURIComponent(output)));
+  // Get fresh SHA to avoid conflicts
+  try {
+    const r = await fetch(
+      `https://api.github.com/repos/${ghRepo}/contents/${ghPath}?ref=${ghBranch}`,
+      { headers: { Authorization: `token ${ghToken}`, Accept: 'application/vnd.github.v3+json' } }
+    );
+    if (!r.ok) throw new Error((await r.json()).message);
+    ghSha = (await r.json()).sha;
+  } catch(e) {
+    showToast('✗ Could not reach GitHub: ' + e.message, 'error');
+    btn.disabled = false;
+    btn.textContent = '🚀 Push to GitHub';
+    return;
+  }
+
+  // Encode content for GitHub API
+  const bytes = new TextEncoder().encode(output);
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  const encoded = btoa(binary);
 
   try {
     const resp = await fetch(
@@ -431,14 +399,11 @@ async function pushToGitHub() {
         })
       }
     );
-
     const result = await resp.json();
     if (!resp.ok) throw new Error(result.message || `GitHub error ${resp.status}`);
-
-    // Update sha for next save
-    ghSha    = result.content.sha;
+    ghSha = result.content.sha;
     siteHtml = output;
-    showToast('🚀 Pushed! Site will update in ~30 seconds.', 'success');
+    showToast('🚀 Pushed! Site updates in ~30 seconds.', 'success');
   } catch(e) {
     showToast('✗ Push failed: ' + e.message, 'error');
   }
@@ -447,11 +412,10 @@ async function pushToGitHub() {
   btn.textContent = '🚀 Push to GitHub';
 }
 
-// ── TOAST ──────────────────────────────────────────────
-function showToast(msg, type='success') {
+function showToast(msg, type) {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = `${type} show`;
+  t.className = type + ' show';
   setTimeout(() => t.classList.remove('show'), 4000);
 }
 </script>
