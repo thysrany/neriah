@@ -245,10 +245,25 @@
     .donate-card { position: static; }
   }
   @media (max-width: 640px) {
-    nav { flex-wrap: wrap; padding: 10px 4%; gap: 10px; }
-    .nav-links { gap: 12px; flex-wrap: wrap; }
-    .hero-content { flex-direction: column-reverse; padding: 50px 5%; }
-    .hero-logo img { width: 150px; }
+    /* NAV */
+    nav { padding: 0 4%; min-height: 60px; }
+    .nav-logo img { height: 38px; }
+    .nav-logo span { font-size: 0.82rem; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 0.75rem; }
+
+    /* HERO — logo above text, centered */
+    .hero { min-height: auto; }
+    .hero-content { flex-direction: column; align-items: center; padding: 40px 5% 36px; gap: 20px; }
+    .hero-logo { order: -1; }
+    .hero-logo img { width: 130px; }
+    .hero-text { text-align: center; }
+    .hero-cta { justify-content: center; }
+    .hero h1 { font-size: 1.9rem; }
+    .hero-eyebrow { font-size: 0.75rem; white-space: nowrap; }
+    .hero p { font-size: 0.95rem; }
+
+    /* SECTIONS */
     .photo-grid { grid-template-columns: 1fr; }
     .photo-item.wide { grid-column: span 1; }
     .gallery-strip { grid-template-columns: 1fr 1fr; }
