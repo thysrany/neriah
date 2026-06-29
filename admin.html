@@ -42,10 +42,7 @@
     background:#fdf0f0; border:1px solid #f5c6c6; border-radius:6px;
     padding:10px 14px; display:none; text-align:left; line-height:1.6;
   }
-  .token-help {
-    margin-top:18px; font-size:0.76rem; color:#aaa; line-height:1.7; text-align:left;
-    background:#f8f8f8; border-radius:6px; padding:12px 14px;
-  }
+  .token-help { margin-top:18px; font-size:0.76rem; color:#aaa; line-height:1.7; text-align:left; background:#f8f8f8; border-radius:6px; padding:12px 14px; }
   .token-help a { color:var(--green); }
 
   #admin-screen { display:none; }
@@ -72,10 +69,7 @@
   .admin-header p { color:#666; font-size:0.95rem; line-height:1.7; }
 
   .photo-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
-  .photo-card {
-    background:#fff; border-radius:10px; overflow:hidden;
-    box-shadow:0 2px 12px rgba(0,0,0,0.08); border:2px solid transparent; transition:all 0.2s;
-  }
+  .photo-card { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.08); border:2px solid transparent; transition:all 0.2s; }
   .photo-card.changed { border-color:var(--green); }
   .card-thumb { width:100%; height:190px; object-fit:cover; display:block; background:#e8efe8; }
   .card-thumb.bg { background-size:cover; background-position:center; }
@@ -83,17 +77,9 @@
   .card-label { font-weight:700; color:#222; font-size:0.95rem; margin-bottom:3px; }
   .card-hint { font-size:0.78rem; color:#999; margin-bottom:14px; }
   .card-actions { display:flex; gap:8px; }
-  .btn-change {
-    flex:1; padding:9px; background:var(--green); color:#fff; border:none;
-    border-radius:6px; font-weight:700; font-size:0.82rem;
-    font-family:'Lato',sans-serif; cursor:pointer;
-  }
+  .btn-change { flex:1; padding:9px; background:var(--green); color:#fff; border:none; border-radius:6px; font-weight:700; font-size:0.82rem; font-family:'Lato',sans-serif; cursor:pointer; }
   .btn-change:hover { background:#155a1e; }
-  .btn-reset {
-    padding:9px 14px; background:#f0f0f0; color:#666; border:none;
-    border-radius:6px; font-weight:700; font-size:0.82rem;
-    font-family:'Lato',sans-serif; cursor:pointer;
-  }
+  .btn-reset { padding:9px 14px; background:#f0f0f0; color:#666; border:none; border-radius:6px; font-weight:700; font-size:0.82rem; font-family:'Lato',sans-serif; cursor:pointer; }
   .btn-reset:hover { background:#ddd; }
   .card-status { font-size:0.72rem; font-weight:700; margin-top:8px; color:#bbb; }
   .card-status.changed { color:var(--green); }
@@ -121,8 +107,8 @@
     opacity:0; transform:translateY(-10px); transition:all 0.3s; pointer-events:none;
   }
   #toast.success { background:var(--green); }
-  #toast.error   { background:#c0392b; }
-  #toast.show    { opacity:1; transform:translateY(0); }
+  #toast.error { background:#c0392b; }
+  #toast.show { opacity:1; transform:translateY(0); }
 
   @media(max-width:640px){
     .admin-nav { padding:0 16px; }
@@ -136,10 +122,9 @@
 
 <div id="login-screen">
   <div class="login-card">
-    <img src="Logo_NERIAH_transparent.png" alt="Neriah" onerror="this.style.display='none'">
+    <img src="logo.png" alt="Neriah" onerror="this.style.display='none'">
     <h1>Site Admin</h1>
     <p class="sub">Neriah Community Health Foundation</p>
-
     <div class="field">
       <label>Admin Password</label>
       <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')tryLogin()">
@@ -157,14 +142,8 @@
       <label>Branch</label>
       <input type="text" id="branch-input" value="main">
     </div>
-    <div class="field">
-      <label>File path</label>
-      <input type="text" id="path-input" value="index.html">
-    </div>
-
     <button id="login-btn" onclick="tryLogin()">Sign In & Connect to GitHub</button>
     <div id="login-error"></div>
-
     <div class="token-help">
       <strong>Need a token?</strong> GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → check <strong>repo</strong> → copy it.<br><br>
       <a href="https://github.com/settings/tokens/new?description=Neriah+Admin&scopes=repo" target="_blank">→ Create token on GitHub</a>
@@ -175,7 +154,7 @@
 <div id="admin-screen">
   <nav class="admin-nav">
     <div class="nav-brand">
-      <img src="Logo_NERIAH_transparent.png" alt="Logo" onerror="this.style.display='none'">
+      <img src="logo.png" alt="Logo" onerror="this.style.display='none'">
       <div>
         <small>Admin Panel</small>
         <span>Neriah Community Health Foundation</span>
@@ -183,15 +162,13 @@
     </div>
     <button id="logout-btn" onclick="logout()">Sign Out</button>
   </nav>
-
   <div class="admin-body">
     <div class="admin-header">
       <h2>Edit Website Photos</h2>
-      <p>Click <strong>Change Photo</strong>, pick an image, then click <strong>Push to GitHub</strong>. Your live site updates in ~30 seconds.</p>
+      <p>Click <strong>Change Photo</strong>, pick an image from your computer, then click <strong>Push to GitHub</strong>. Photos are uploaded as separate files — your site stays fast and lightweight.</p>
     </div>
     <div class="photo-grid" id="photo-grid"></div>
   </div>
-
   <div class="save-bar">
     <p><span id="change-count">No changes yet</span></p>
     <button id="push-btn" onclick="pushToGitHub()">🚀 Push to GitHub</button>
@@ -204,31 +181,30 @@
 <script>
 const PASSWORD = 'neriah2024';
 
+// Each photo: what filename to save it as in the repo, and what to replace in index.html
 const PHOTOS = [
-  { id:'hero-bg',        label:'Hero Background',           hint:'Full-width banner at top',              urlKey:'photo-1509099836639-18ba1795216d', isBg:true  },
-  { id:'impact-1',       label:'Impact — Children Smiling', hint:'Large photo in impact grid',            urlKey:'photo-1602693130669-9c9e53cc320c', isBg:false },
-  { id:'impact-2',       label:'Impact — Community',        hint:'Wide photo in impact grid',             urlKey:'photo-1509099836639-18ba1795216d', isBg:false },
-  { id:'impact-3',       label:'Impact — Healthcare',       hint:'Healthcare worker photo',               urlKey:'photo-1591012911207-0dbbc96f3db4', isBg:false },
-  { id:'impact-4',       label:'Impact — Child Care',       hint:'Child receiving care photo',            urlKey:'photo-1544476671-267ad5717d8e',    isBg:false },
-  { id:'pillar-medical', label:'Pillar — Medical Centers',  hint:'Photo in Medical Centers card',         urlKey:'photo-1551884170-09fb70a3a2ed',    isBg:false },
-  { id:'pillar-edu',     label:'Pillar — Education',        hint:'Photo in Education card',               urlKey:'photo-1454165804606-c3d57bc86b40', isBg:false },
-  { id:'pillar-comm',    label:'Pillar — Community',        hint:'Photo in Community card',               urlKey:'photo-1509099836639-18ba1795216d', isBg:false },
-  { id:'strip-hope',     label:'Gallery — Hope',            hint:'1st panel in gallery strip',            urlKey:'photo-1611432579699-484f7990b127', isBg:false },
-  { id:'strip-care',     label:'Gallery — Care',            hint:'2nd panel in gallery strip',            urlKey:'photo-1588776814546-daab30f310ce', isBg:false },
-  { id:'strip-edu',      label:'Gallery — Education',       hint:'4th panel in gallery strip',            urlKey:'photo-1497486751825-1233686d5d80', isBg:false },
-  { id:'story-photo',    label:'Founder Story Photo',       hint:'Photo in "A Dream Born in Haiti"',      urlKey:'photo-1531983412531-1f49a365ffed', isBg:false },
+  { id:'hero-bg',        label:'Hero Background',           hint:'Full-width banner at top',         fileName:'photo-hero.jpg',        isBg:true,  urlKey:'photo-1509099836639-18ba1795216d' },
+  { id:'impact-1',       label:'Impact — Children Smiling', hint:'Large photo in impact grid',        fileName:'photo-impact-1.jpg',    isBg:false, urlKey:'photo-1602693130669-9c9e53cc320c' },
+  { id:'impact-2',       label:'Impact — Community',        hint:'Wide photo in impact grid',         fileName:'photo-impact-2.jpg',    isBg:false, urlKey:'photo-1509099836639-18ba1795216d' },
+  { id:'impact-3',       label:'Impact — Healthcare',       hint:'Healthcare worker photo',           fileName:'photo-impact-3.jpg',    isBg:false, urlKey:'photo-1591012911207-0dbbc96f3db4' },
+  { id:'impact-4',       label:'Impact — Child Care',       hint:'Child receiving care photo',        fileName:'photo-impact-4.jpg',    isBg:false, urlKey:'photo-1544476671-267ad5717d8e'    },
+  { id:'pillar-medical', label:'Pillar — Medical Centers',  hint:'Photo in Medical Centers card',     fileName:'photo-pillar-1.jpg',    isBg:false, urlKey:'photo-1551884170-09fb70a3a2ed'    },
+  { id:'pillar-edu',     label:'Pillar — Education',        hint:'Photo in Education card',           fileName:'photo-pillar-2.jpg',    isBg:false, urlKey:'photo-1454165804606-c3d57bc86b40' },
+  { id:'pillar-comm',    label:'Pillar — Community',        hint:'Photo in Community card',           fileName:'photo-pillar-3.jpg',    isBg:false, urlKey:'photo-1509099836639-18ba1795216d' },
+  { id:'strip-hope',     label:'Gallery — Hope',            hint:'1st panel in gallery strip',        fileName:'photo-strip-1.jpg',     isBg:false, urlKey:'photo-1611432579699-484f7990b127' },
+  { id:'strip-care',     label:'Gallery — Care',            hint:'2nd panel in gallery strip',        fileName:'photo-strip-2.jpg',     isBg:false, urlKey:'photo-1588776814546-daab30f310ce' },
+  { id:'strip-edu',      label:'Gallery — Education',       hint:'4th panel in gallery strip',        fileName:'photo-strip-3.jpg',     isBg:false, urlKey:'photo-1497486751825-1233686d5d80' },
+  { id:'story-photo',    label:'Founder Story Photo',       hint:'Photo in "A Dream Born in Haiti"',  fileName:'photo-story.jpg',       isBg:false, urlKey:'photo-1531983412531-1f49a365ffed' },
 ];
 
-const customPhotos = {};
-let siteHtml = '';
-let ghToken = '', ghRepo = '', ghBranch = '', ghPath = '', ghSha = '';
+const customPhotos = {}; // id → { dataUrl, fileName, fileType }
+let ghToken = '', ghRepo = '', ghBranch = 'main';
 
 async function tryLogin() {
   const pw     = document.getElementById('pw-input').value.trim();
   const token  = document.getElementById('token-input').value.trim();
   const repo   = document.getElementById('repo-input').value.trim();
   const branch = document.getElementById('branch-input').value.trim() || 'main';
-  const path   = document.getElementById('path-input').value.trim() || 'index.html';
   const errEl  = document.getElementById('login-error');
   const btn    = document.getElementById('login-btn');
 
@@ -239,18 +215,16 @@ async function tryLogin() {
   btn.disabled = true;
   btn.textContent = 'Connecting…';
 
+  // Verify token works by fetching the repo
   try {
-    const resp = await fetch(
-      `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`,
+    const resp = await fetch(`https://api.github.com/repos/${repo}`,
       { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } }
     );
     if (!resp.ok) {
       const err = await resp.json();
       throw new Error(err.message || `HTTP ${resp.status}`);
     }
-    const data = await resp.json();
-    ghToken = token; ghRepo = repo; ghBranch = branch; ghPath = path; ghSha = data.sha;
-    siteHtml = decodeURIComponent(escape(atob(data.content.replace(/\n/g,''))));
+    ghToken = token; ghRepo = repo; ghBranch = branch;
   } catch(e) {
     showLoginError('GitHub error: ' + e.message);
     btn.disabled = false;
@@ -270,7 +244,7 @@ function showLoginError(msg) {
 }
 
 function logout() {
-  ghToken = ghRepo = ghBranch = ghPath = ghSha = siteHtml = '';
+  ghToken = ghRepo = '';
   Object.keys(customPhotos).forEach(k => delete customPhotos[k]);
   document.getElementById('admin-screen').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
@@ -289,11 +263,10 @@ function buildGrid() {
     const thumb  = custom ? custom.dataUrl : `https://images.unsplash.com/${p.urlKey}?w=400&q=60`;
     const card   = document.createElement('div');
     card.className = 'photo-card' + (custom ? ' changed' : '');
-    card.innerHTML = p.isBg
+    card.innerHTML = (p.isBg
       ? `<div class="card-thumb bg" style="background-image:url('${thumb}')"></div>`
-      : `<img class="card-thumb" src="${thumb}" alt="${p.label}" onerror="this.style.background='#ddd'">`;
-    card.innerHTML += `
-      <div class="card-body">
+      : `<img class="card-thumb" src="${thumb}" alt="${p.label}" onerror="this.style.background='#ddd'">`)
+    + `<div class="card-body">
         <div class="card-label">${p.label}</div>
         <div class="card-hint">${p.hint}</div>
         <div class="card-actions">
@@ -301,14 +274,14 @@ function buildGrid() {
           ${custom ? `<button class="btn-reset" onclick="resetPhoto('${p.id}')">↺ Reset</button>` : ''}
         </div>
         <div class="card-status ${custom ? 'changed' : ''}">
-          ${custom ? '✓ ' + custom.fileName : 'Original photo'}
+          ${custom ? '✓ ' + custom.originalName : 'Using Unsplash photo'}
         </div>
       </div>`;
     grid.appendChild(card);
   });
   const n = Object.keys(customPhotos).length;
   document.getElementById('change-count').textContent =
-    n === 0 ? 'No changes yet' : `${n} photo${n > 1 ? 's' : ''} changed`;
+    n === 0 ? 'No changes yet' : `${n} photo${n > 1 ? 's' : ''} ready to push`;
 }
 
 function openPicker(id) {
@@ -321,7 +294,7 @@ function openPicker(id) {
 function loadPhoto(file, id) {
   const reader = new FileReader();
   reader.onload = e => {
-    customPhotos[id] = { dataUrl: e.target.result, fileName: file.name };
+    customPhotos[id] = { dataUrl: e.target.result, originalName: file.name, fileType: file.type };
     buildGrid();
     showToast('✓ Photo ready — click Push to GitHub', 'success');
   };
@@ -333,79 +306,123 @@ function resetPhoto(id) {
   buildGrid();
 }
 
-async function pushToGitHub() {
-  if (Object.keys(customPhotos).length === 0) {
-    showToast('No changes to push', 'error');
-    return;
-  }
-  const btn = document.getElementById('push-btn');
-  btn.disabled = true;
-  btn.textContent = '⏳ Pushing…';
+// Upload a single file to GitHub, creating or updating it
+async function uploadFile(path, dataUrl, message) {
+  // Strip data URL prefix to get raw base64
+  const base64 = dataUrl.split(',')[1];
 
-  // Apply photo replacements to the site HTML
-  let output = siteHtml;
-  PHOTOS.forEach(p => {
-    const custom = customPhotos[p.id];
-    if (!custom) return;
+  // Check if file already exists (need its SHA to update)
+  let sha = null;
+  const check = await fetch(
+    `https://api.github.com/repos/${ghRepo}/contents/${path}?ref=${ghBranch}`,
+    { headers: { Authorization: `token ${ghToken}`, Accept: 'application/vnd.github.v3+json' } }
+  );
+  if (check.ok) {
+    const existing = await check.json();
+    sha = existing.sha;
+  }
+
+  const body = { message, content: base64, branch: ghBranch };
+  if (sha) body.sha = sha;
+
+  const resp = await fetch(
+    `https://api.github.com/repos/${ghRepo}/contents/${path}`,
+    {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${ghToken}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body)
+    }
+  );
+  if (!resp.ok) {
+    const err = await resp.json();
+    throw new Error(err.message || `GitHub error ${resp.status}`);
+  }
+  return await resp.json();
+}
+
+// Update index.html to use local filenames instead of Unsplash URLs
+async function updateIndexHtml(changedPhotos) {
+  // Fetch current index.html
+  const resp = await fetch(
+    `https://api.github.com/repos/${ghRepo}/contents/index.html?ref=${ghBranch}`,
+    { headers: { Authorization: `token ${ghToken}`, Accept: 'application/vnd.github.v3+json' } }
+  );
+  if (!resp.ok) throw new Error('Could not fetch index.html');
+  const data = await resp.json();
+  let html = decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))));
+  const sha = data.sha;
+
+  // Replace each Unsplash URL with the local filename
+  changedPhotos.forEach(p => {
     if (p.isBg) {
-      output = output.replace(
+      html = html.replace(
         new RegExp(`url\\('https://images\\.unsplash\\.com/${p.urlKey}[^']*'\\)`, 'g'),
-        `url('${custom.dataUrl}')`
+        `url('${p.fileName}')`
       );
     } else {
-      output = output.replace(
+      html = html.replace(
         new RegExp(`https://images\\.unsplash\\.com/${p.urlKey}[^"'\\s]*`, 'g'),
-        custom.dataUrl
+        p.fileName
       );
     }
   });
 
-  // Get fresh SHA to avoid conflicts
-  try {
-    const r = await fetch(
-      `https://api.github.com/repos/${ghRepo}/contents/${ghPath}?ref=${ghBranch}`,
-      { headers: { Authorization: `token ${ghToken}`, Accept: 'application/vnd.github.v3+json' } }
-    );
-    if (!r.ok) throw new Error((await r.json()).message);
-    ghSha = (await r.json()).sha;
-  } catch(e) {
-    showToast('✗ Could not reach GitHub: ' + e.message, 'error');
-    btn.disabled = false;
-    btn.textContent = '🚀 Push to GitHub';
-    return;
-  }
-
-  // Encode content for GitHub API
-  const bytes = new TextEncoder().encode(output);
+  // Push updated index.html
+  const bytes = new TextEncoder().encode(html);
   let binary = '';
   bytes.forEach(b => binary += String.fromCharCode(b));
   const encoded = btoa(binary);
 
+  const putResp = await fetch(
+    `https://api.github.com/repos/${ghRepo}/contents/index.html`,
+    {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${ghToken}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: 'Update website photos via admin panel',
+        content: encoded,
+        sha,
+        branch: ghBranch,
+      })
+    }
+  );
+  if (!putResp.ok) {
+    const err = await putResp.json();
+    throw new Error(err.message || `GitHub error ${putResp.status}`);
+  }
+}
+
+async function pushToGitHub() {
+  const changed = PHOTOS.filter(p => customPhotos[p.id]);
+  if (changed.length === 0) { showToast('No changes to push', 'error'); return; }
+
+  const btn = document.getElementById('push-btn');
+  btn.disabled = true;
+
   try {
-    const resp = await fetch(
-      `https://api.github.com/repos/${ghRepo}/contents/${ghPath}`,
-      {
-        method: 'PUT',
-        headers: {
-          Authorization: `token ${ghToken}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: 'Update website photos via admin panel',
-          content: encoded,
-          sha: ghSha,
-          branch: ghBranch,
-        })
-      }
-    );
-    const result = await resp.json();
-    if (!resp.ok) throw new Error(result.message || `GitHub error ${resp.status}`);
-    ghSha = result.content.sha;
-    siteHtml = output;
+    // Step 1: Upload each photo as a separate file
+    for (let i = 0; i < changed.length; i++) {
+      const p = changed[i];
+      const custom = customPhotos[p.id];
+      btn.textContent = `⏳ Uploading ${i + 1}/${changed.length}…`;
+      await uploadFile(p.fileName, custom.dataUrl, `Upload photo: ${p.fileName}`);
+    }
+
+    // Step 2: Update index.html to reference local filenames
+    btn.textContent = '⏳ Updating index.html…';
+    await updateIndexHtml(changed);
+
     showToast('🚀 Pushed! Site updates in ~30 seconds.', 'success');
   } catch(e) {
-    showToast('✗ Push failed: ' + e.message, 'error');
+    showToast('✗ ' + e.message, 'error');
   }
 
   btn.disabled = false;
