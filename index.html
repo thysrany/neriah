@@ -380,6 +380,44 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
+
+  /* ── DONATION BUTTONS ── */
+  .amount-btn {
+    background: rgba(255,255,255,0.12); color:#fff; border:2px solid rgba(255,255,255,0.25);
+    border-radius:6px; padding:10px; font-size:1rem; font-weight:700;
+    cursor:pointer; transition:all 0.2s; font-family:'Lato',sans-serif;
+  }
+  .amount-btn:hover, .amount-btn.selected {
+    background:var(--amber); border-color:var(--amber); color:#fff;
+    transform:translateY(-2px);
+  }
+  .paypal-btn {
+    width:100%; padding:13px; color:#fff; border:none; border-radius:6px;
+    font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s;
+    font-family:'Lato',sans-serif; display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .paypal-btn:hover { opacity:0.88; transform:translateY(-2px); }
+  #custom-amount::placeholder { color:rgba(255,255,255,0.4); }
+  #custom-amount::-webkit-outer-spin-button,
+  #custom-amount::-webkit-inner-spin-button { -webkit-appearance:none; }
+
+  .amount-btn {
+    background:rgba(255,255,255,0.12); color:#fff; border:2px solid rgba(255,255,255,0.25);
+    border-radius:6px; padding:10px; font-size:1rem; font-weight:700;
+    cursor:pointer; transition:all 0.2s; font-family:'Lato',sans-serif;
+  }
+  .amount-btn:hover, .amount-btn.selected {
+    background:var(--amber); border-color:var(--amber); transform:translateY(-2px);
+  }
+  .paypal-btn {
+    width:100%; padding:13px; color:#fff; border:none; border-radius:6px;
+    font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.2s;
+    font-family:'Lato',sans-serif;
+  }
+  .paypal-btn:hover { opacity:0.88; transform:translateY(-2px); }
+  #custom-amount::placeholder { color:rgba(255,255,255,0.4); }
+  #custom-amount::-webkit-outer-spin-button,
+  #custom-amount::-webkit-inner-spin-button { -webkit-appearance:none; }
 </style>
 </head>
 <body>
@@ -651,9 +689,41 @@
     <div>
       <div class="donate-card anim-fade-right">
         <h3>Make a Difference Today</h3>
-        <p>Your donation goes directly to the communities of Haiti who need it most. We recognize donors like you as part of our family — your generosity makes this mission possible.</p>
-        <a href="mailto:neriahchf@yahoo.com?subject=Donation%20Inquiry" class="btn-primary">Donate or Partner With Us</a>
-        <p class="tax-note">Neriah Community Health Foundation is a registered 501(c)(3) tax-exempt organization. All donations are tax-deductible to the extent permitted by law.</p>
+        <p>Your donation goes directly to the communities of Haiti who need it most. Every gift — large or small — changes lives.</p>
+
+        <div id="preset-amounts" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;">
+          <button class="amount-btn" onclick="selectAmount(25)">$25</button>
+          <button class="amount-btn" onclick="selectAmount(50)">$50</button>
+          <button class="amount-btn" onclick="selectAmount(100)">$100</button>
+          <button class="amount-btn" onclick="selectAmount(250)">$250</button>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <div style="font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Or enter a custom amount</div>
+          <div style="display:flex;align-items:center;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);border-radius:6px;overflow:hidden;">
+            <span style="padding:0 12px;font-size:1.1rem;color:rgba(255,255,255,0.7);">$</span>
+            <input type="number" id="custom-amount" min="1" placeholder="Other amount"
+              oninput="selectCustom(this.value)"
+              style="flex:1;background:transparent;border:none;outline:none;padding:11px 8px;
+                     color:#fff;font-size:1rem;font-family:inherit;">
+          </div>
+        </div>
+
+        <div id="selected-display" style="text-align:center;margin-bottom:16px;font-size:0.88rem;min-height:20px;"></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <button onclick="donatePayPal('Donate Now')" class="paypal-btn" style="background:var(--gold);">
+            ❤️ Donate Now
+          </button>
+          <button onclick="donatePayPal('Give Today')" class="paypal-btn" style="background:#0070ba;">
+            🅿 Give Today via PayPal
+          </button>
+          <button onclick="donatePayPal('Support Our Mission')" class="paypal-btn" style="background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.4);">
+            🌿 Support Our Mission
+          </button>
+        </div>
+
+        <p class="tax-note" style="margin-top:18px;">Neriah Community Health Foundation is a registered 501(c)(3) tax-exempt organization. All donations are tax-deductible to the extent permitted by law.</p>
       </div>
     </div>
   </div>
@@ -671,8 +741,7 @@
           <div class="contact-icon">📍</div>
           <div>
             <h4>Location</h4>
-            <p>Neriah Community Health Foundation P.O box 996, Medford, MA 02155
-</p>
+            <p>Medford, MA 02155</p>
           </div>
         </div>
         <div class="contact-item">
@@ -759,6 +828,54 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 
 animEls.forEach(el => observer.observe(el));
+</script>
+
+
+<script>
+let selectedAmount = null;
+
+function selectAmount(amount) {
+  selectedAmount = amount;
+  document.getElementById('custom-amount').value = '';
+  document.querySelectorAll('.amount-btn').forEach((b,i) => {
+    b.classList.toggle('selected', [25,50,100,250][i] === amount);
+  });
+  updateDisplay();
+}
+
+function selectCustom(val) {
+  selectedAmount = val ? parseFloat(val) : null;
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+  updateDisplay();
+}
+
+function updateDisplay() {
+  const el = document.getElementById('selected-display');
+  if (selectedAmount && selectedAmount > 0) {
+    el.innerHTML = '<span style="color:var(--amber);font-weight:700;">Selected: $' + parseFloat(selectedAmount).toFixed(2) + ' USD</span>';
+  } else {
+    el.innerHTML = '<span style="color:rgba(255,255,255,0.5);">Select or enter an amount above</span>';
+  }
+}
+
+function donatePayPal(label) {
+  if (!selectedAmount || selectedAmount <= 0) {
+    alert('Please select or enter a donation amount first.');
+    return;
+  }
+  const params = new URLSearchParams({
+    cmd: '_donations',
+    business: 'neriahchf@yahoo.com',
+    item_name: 'Neriah Community Health Foundation — ' + label,
+    amount: parseFloat(selectedAmount).toFixed(2),
+    currency_code: 'USD',
+    return: 'https://neriahcommunityhealth.org',
+    cancel_return: 'https://neriahcommunityhealth.org',
+  });
+  window.open('https://www.paypal.com/donate/?' + params.toString(), '_blank');
+}
+
+updateDisplay();
 </script>
 </body>
 </html>
